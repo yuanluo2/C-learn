@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAX_FILE_NAME_LENGTH 256
+#define MAX_PATH_NAME_LENGTH 256
 
 void walkDir(const char* path){
 	if (GetFileAttributes(path) != FILE_ATTRIBUTE_DIRECTORY){
@@ -17,8 +17,8 @@ void walkDir(const char* path){
 		return;
 	}
 	
-	char fileNameString[MAX_FILE_NAME_LENGTH];
-	snprintf(fileNameString, MAX_FILE_NAME_LENGTH, "%s\\*.*", path);
+	char fileNameString[MAX_PATH_NAME_LENGTH];
+	snprintf(fileNameString, MAX_PATH_NAME_LENGTH, "%s\\*.*", path);
 	
 	WIN32_FIND_DATA fd;
 	HANDLE hd = FindFirstFile(fileNameString, &fd);
@@ -36,7 +36,7 @@ void walkDir(const char* path){
 		printf("%s\\%s\n", path, fd.cFileName);
 		
 		if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY){
-			snprintf(fileNameString, MAX_FILE_NAME_LENGTH, "%s\\%s", path, fd.cFileName);
+			snprintf(fileNameString, MAX_PATH_NAME_LENGTH, "%s\\%s", path, fd.cFileName);
 			walkDir(fileNameString);
 		}
 	}
@@ -50,7 +50,7 @@ void walkDir(const char* path){
 #include <stdio.h>
 #include <string.h>
 
-#define MAX_FILE_NAME_LENGTH 256
+#define MAX_PATH_NAME_LENGTH 256
 
 void walkDir(const char* path){
 	DIR* dir = opendir(path);
@@ -69,8 +69,8 @@ void walkDir(const char* path){
 		printf("%s/%s\n", path, d->d_name);
 		
 		if (d->d_type == DT_DIR){
-			char fileNameString[MAX_FILE_NAME_LENGTH];
-			snprintf(fileNameString, MAX_FILE_NAME_LENGTH, "%s/%s", path, d->d_name);
+			char fileNameString[MAX_PATH_NAME_LENGTH];
+			snprintf(fileNameString, MAX_PATH_NAME_LENGTH, "%s/%s", path, d->d_name);
 			walkDir(fileNameString);	
 		}
 	}
