@@ -105,7 +105,7 @@ int main() {
 			break;
 		}
 
-		if (mysql_real_connect(mysql, "localhost", "who_knows", "you_guess", "you_guess", 3306, NULL, 0) == NULL) {
+		if (mysql_real_connect(mysql, "localhost", "<user>", "<password>", "<db_name>", 3306, NULL, 0) == NULL) {
 			fprintf(stderr, "main, mysql_real_connect() error: %s.\n", mysql_error(mysql));
 			break;
 		}
