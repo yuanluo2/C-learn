@@ -31,7 +31,7 @@ void printLastError(){
     printf("errNum: %d => %s", errNum, errMsg);
 }
 
-/* must, remember to call free() for the return string. */
+/* remember to call free() for the return string. */
 char* utf8_to_gbk(const char* src){
     int ret = 0;
     wchar_t* wBuf = NULL;
@@ -76,7 +76,7 @@ char* utf8_to_gbk(const char* src){
     return buf;
 }
 
-/* must, remember to call free() for the return string. */
+/* remember to call free() for the return string. */
 char* gbk_to_utf8(const char* src){
     int ret = 0;
     wchar_t* wBuf = NULL;
@@ -128,6 +128,6 @@ int main(){
     
     char* res = utf8_to_gbk(str);
     printf("%s\n", res);
-    free(res);
+    free(res);      /* remember this. */
     return 0;
 }
