@@ -37,7 +37,7 @@ char* utf8_to_gbk(const char* src){
     wchar_t* wBuf = NULL;
     char* buf = NULL;
 	
-	do{
+    do{
         if ((ret = MultiByteToWideChar(CP_UTF8, 0, src, -1, NULL, 0)) <= 0){
             printLastError();
             break;
