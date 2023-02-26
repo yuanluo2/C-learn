@@ -9,6 +9,7 @@
 	1. If the giving buf, capacity or stream is NULL, return -1, and errno will be set to EINVAL.
 	2. If malloc(), realloc(), ferror() failed or reach EOF, return -1, no errno will be set.
 	3. Otherwise, return the length of the buf, this length does not include '\0'.
+	4. Never forget to call free() on the buf.
 	
 	This function does not adds the delim to the buf.
 */
@@ -104,6 +105,8 @@ void test_user_input(){
 	printf("%s\n", buf);
 	printf("capacity is %d\n", capacity);
 	printf("length is %d\n", len);
+	
+	free(buf);
 }
 
 int main(){
