@@ -48,7 +48,7 @@ char* utf8_to_gbk(const char* src){
             break;
         }
         
-        if ((ret = MultiByteToWideChar(CP_UTF8, 0, src, -1, wBuf, ret + 10)) <= 0){
+        if ((ret = MultiByteToWideChar(CP_UTF8, 0, src, -1, wBuf, ret * 2)) <= 0){
             printLastError();
             break;
         }
@@ -63,7 +63,7 @@ char* utf8_to_gbk(const char* src){
             break;
         }
         
-        if ((ret = WideCharToMultiByte(CP_ACP, 0, wBuf, -1, buf, ret + 10, NULL, NULL)) <= 0){
+        if ((ret = WideCharToMultiByte(CP_ACP, 0, wBuf, -1, buf, ret * 2, NULL, NULL)) <= 0){
             printLastError();
             break;
         }
@@ -93,7 +93,7 @@ char* gbk_to_utf8(const char* src){
             break;
         }
         
-        if ((ret = MultiByteToWideChar(CP_ACP, 0, src, -1, wBuf, ret + 10)) <= 0){
+        if ((ret = MultiByteToWideChar(CP_ACP, 0, src, -1, wBuf, ret * 2)) <= 0){
             printLastError();
             break;
         }
@@ -108,7 +108,7 @@ char* gbk_to_utf8(const char* src){
             break;
         }
         
-        if ((ret = WideCharToMultiByte(CP_UTF8, 0, wBuf, -1, buf, ret + 10, NULL, NULL)) <= 0){
+        if ((ret = WideCharToMultiByte(CP_UTF8, 0, wBuf, -1, buf, ret * 2, NULL, NULL)) <= 0){
             printLastError();
             break;
         }
