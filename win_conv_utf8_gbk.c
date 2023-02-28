@@ -43,7 +43,7 @@ char* utf8_to_gbk(const char* src){
             break;
         }
         
-        if ((wBuf = (wchar_t*)malloc(ret + 10)) == NULL){
+        if ((wBuf = (wchar_t*)malloc(ret * 2)) == NULL){
             perror("malloc() on wBuf failed");
             break;
         }
@@ -58,7 +58,7 @@ char* utf8_to_gbk(const char* src){
             break;
         }
         
-        if ((buf = (char*)malloc(ret + 10)) == NULL){
+        if ((buf = (char*)malloc(ret * 2)) == NULL){
             perror("malloc() on buf failed");
             break;
         }
@@ -88,7 +88,7 @@ char* gbk_to_utf8(const char* src){
             break;
         }
         
-        if ((wBuf = (wchar_t*)malloc(ret + 10)) == NULL){
+        if ((wBuf = (wchar_t*)malloc(ret * 2)) == NULL){
             perror("malloc() on wBuf failed");
             break;
         }
@@ -103,7 +103,7 @@ char* gbk_to_utf8(const char* src){
             break;
         }
         
-        if ((buf = (char*)malloc(ret + 10)) == NULL){
+        if ((buf = (char*)malloc(ret * 2)) == NULL){
             perror("malloc() on buf failed");
             break;
         }
